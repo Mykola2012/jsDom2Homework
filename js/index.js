@@ -53,15 +53,21 @@ function createNewsListItem({ title, headerBgSrc, category, body, date }) {
   const newsListItem = document.createElement("li");
   newsListItem.classList.add("news-list-item");
 
-  newsListItem.append(createNewsHeader({ headerBgSrc, title }));
+  newsListItem.append(
+    createNewsHeader({ headerBgSrc, title }),
+    createCategoryTitle(category),
+    createArticleNews(body),
+    createFooterNews({ date })
+  );
 
   return newsListItem;
 }
 
-function createNewsHeader({ headerBgSrc, title }) {
+function createNewsHeader({ title, headerBgSrc }) {
   const newsHeader = document.createElement("div");
-  newsHeader.style.background = `url(${headerBgSrc})`;
+  newsHeader.style.background = `url(${headerBgSrc}) center center `;
   newsHeader.classList.add("news-header");
+  newsHeader.classList.add("transparent-bg");
 
   newsHeader.append(createIcontNewsHeader(), createTitleNewsHeader(title));
 
@@ -82,4 +88,53 @@ function createTitleNewsHeader(title) {
   titleHeader.classList.add("main-title-news");
 
   return titleHeader;
+}
+
+function createCategoryTitle(category) {
+  const categoryTitle = document.createElement("h3");
+  categoryTitle.classList.add("category-title");
+  categoryTitle.append(category);
+
+  return categoryTitle;
+}
+
+function createArticleNews(body) {
+  const articleNews = document.createElement("p");
+  articleNews.classList.add("news-body");
+  articleNews.append(body);
+
+  return articleNews;
+}
+
+function createFooterNews({ date }) {
+  const newsFooter = document.createElement("div");
+  newsFooter.classList.add("news-footer");
+  newsFooter.append(createRemoveBtn(), createDateNews(date));
+
+  return newsFooter;
+}
+
+function createRemoveBtn() {
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "Не интересно";
+  removeBtn.classList.add("remove-btn");
+  removeBtn.append(createIconRemoveBtn());
+
+  return removeBtn;
+}
+
+function createIconRemoveBtn() {
+  const iconRemBtn = document.createElement("i");
+  iconRemBtn.classList.add("fas");
+  iconRemBtn.classList.add("fa-eye-slash");
+
+  return iconRemBtn;
+}
+
+function createDateNews(date) {
+  const dateNews = document.createElement("span");
+  dateNews.classList.add("data");
+  dateNews.append(date);
+
+  return dateNews;
 }
