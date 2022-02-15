@@ -18,7 +18,7 @@ h1 {
   display: none;
 }
 
-li {
+.news-list-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,6 @@ li {
 .news-header {
   width: 100%;
   min-height: 150px;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
