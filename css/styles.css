@@ -31,6 +31,10 @@ h1 {
   overflow: hidden;
 }
 
+.list-item-bg {
+  background-color: rgba(225, 236, 186, 0.315);
+}
+
 .news-header {
   width: 100%;
   min-height: 150px;
@@ -38,15 +42,16 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-blend-mode: exclusion;
 }
 
 .fa-heart {
   margin: 10px 10px auto auto;
   padding: 7px;
-  color: rgba(142, 142, 146, 0.575);
+  color: rgba(77, 77, 78, 0.822);
   font-size: 1.2rem;
   border-radius: 50%;
-  background-color: rgba(142, 142, 146, 0.164);
+  background-color: rgba(157, 157, 161, 0.315);
   cursor: pointer;
 }
 
@@ -56,7 +61,7 @@ h1 {
 }
 
 .main-title-news {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 0 20px 20px;
   margin-bottom: auto;
   text-align: center;

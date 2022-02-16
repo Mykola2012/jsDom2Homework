@@ -60,14 +60,18 @@ function createNewsListItem({ title, headerBgSrc, category, body, date }) {
     createFooterNews({ date })
   );
 
+  newsListItem.addEventListener("click", (e) => {
+    e.currentTarget.classList.toggle("list-item-bg");
+  });
+
   return newsListItem;
 }
 
 function createNewsHeader({ title, headerBgSrc }) {
   const newsHeader = document.createElement("div");
-  newsHeader.style.background = `url(${headerBgSrc}) center center `;
+  newsHeader.style.background = `url(${headerBgSrc}) center center/cover no-repeat `;
+  newsHeader.style.backgroundColor = "rgba(255, 255, 255, 0.329)";
   newsHeader.classList.add("news-header");
-  newsHeader.classList.add("transparent-bg");
 
   newsHeader.append(createIcontNewsHeader(), createTitleNewsHeader(title));
 
@@ -78,6 +82,14 @@ function createIcontNewsHeader() {
   const iHeartHeader = document.createElement("i");
   iHeartHeader.classList.add("fas");
   iHeartHeader.classList.add("fa-heart");
+
+  iHeartHeader.addEventListener(
+    "click",
+    (e) => {
+      e.currentTarget.classList.toggle("click-fa-heart");
+    },
+    true
+  );
 
   return iHeartHeader;
 }
@@ -119,6 +131,10 @@ function createRemoveBtn() {
   removeBtn.textContent = "Не интересно";
   removeBtn.classList.add("remove-btn");
   removeBtn.append(createIconRemoveBtn());
+
+  removeBtn.addEventListener("click", (e) => {
+    e.currentTarget.closest(".news-list-item").remove();
+  });
 
   return removeBtn;
 }
