@@ -87,6 +87,7 @@ function createIcontNewsHeader() {
     "click",
     (e) => {
       e.currentTarget.classList.toggle("click-fa-heart");
+      e.stopPropagation();
     },
     true
   );
